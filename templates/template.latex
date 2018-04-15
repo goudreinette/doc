@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+
+\usepackage{fontspec}
+\usepackage[parfill]{parskip}
+\usepackage[top=1.5in, bottom=1.5in, left=2in, right=2in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[ampersand]{easylist}
+\usepackage{pdfpages}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{changepage}
+\usepackage[normalem]{ulem}
+\usepackage[fencedCode,inlineFootnotes,hashEnumerators,smartEllipses,hybrid]{markdown}
+\usepackage{import}
+\usepackage{color}
+\usepackage{listings}
+
+
+% Code blocks -------------
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{xleftmargin=.2in}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\newcommand{\passthrough}[1]{#1}
+
+
+% Layout ------------------
+\pagestyle{fancy}
+\fancyhf{}
+\defaultfontfeatures{Mapping=tex-text}
+\rfoot{\thepage}
+\changepage{}{-20mm}{}{25mm}{}{0mm}{}{}{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\baselinestretch}{1.3}
+
+
+% Fonts -------------------
+\setmainfont{Equity Text A}
+\setmonofont[Scale=0.75]{Fira Mono}
+\newfontfamily\subsectionfont[UprightFont={* SemiBold}]{Geogrotesque}
+
+% Table of contents -------
+\renewcommand{\contentsname}{}
+
+% Sections ----------------
+\titlespacing{\section}{8pc}{2mm}{1.5pc}
+\titlespacing*{\subsection}
+{0pt}{30pt}{-0.5ex}
+\titlespacing*{\subsubsection}
+{0pt}{20pt}{-1ex}
+
+\titleformat{\subsection}
+  {\subsectionfont\fontsize{10}{10}\mdseries}{}{0em}{\uppercase}
+\titleformat{\subsubsection}
+  {\fontsize{10}{9}\bfseries}{}{0em}{}
+\titleformat{\subsubsubsection}
+{\fontsize{7}{7}\bfseries}{}{0em}{}
+
+\newcommand{\sectionbreak}{\clearpage }
+
+
+% Lists --------------------------------
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Content -----------------------------------------------------
+\title{$title$}
+\author{Rein van der Woerd}
+
+\begin{document}
+    % \includepdf[fitpaper=true]{cover.pdf}
+    \tableofcontents
+
+    % Post-TOC Styling --------------
+    \titleformat
+    {\section}
+    [leftmargin]  % shape
+    {\normalfont\large\bfseries\raggedleft} % format
+    {} % label
+    {10pt} % sep
+    {\vspace{26pt}
+     \rule{8pc}{1pt}\\
+     \lowercase
+    }[]
+
+    % Links
+    \hypersetup{colorlinks=true,linkcolor=gray,urlcolor=gray}
+
+    % Chapters -------------
+    $body$
+\end{document}
