@@ -3,3 +3,5 @@
 
 ## Inleiding
 Paragraph...
+
+[Some Link](#inleiding)
