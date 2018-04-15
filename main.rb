@@ -9,7 +9,7 @@ def build
   here = File.basename Dir.pwd
 
   Whirly.start spinner: "bouncingBar", color: false, status: "Building #{here}.pdf" do
-    `pandoc *.md -o "#{here}.pdf" --latex-engine=xelatex --template=template`
+    `pandoc *.md -o "#{here}.pdf" --pdf-engine=xelatex --template=template --listings`
   end
 
   system 'clear'
@@ -19,4 +19,4 @@ end
 
 
 build
-FileWatcher.new("#{Dir.pwd}/*.md").watch { build }
+Filewatcher.new("#{Dir.pwd}/*.md").watch { build }
