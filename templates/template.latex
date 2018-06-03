@@ -18,6 +18,24 @@
 \usepackage{longtable,booktabs}
 \usepackage{etoolbox}
 
+\makeatletter
+\def\ScaleWidthIfNeeded{%
+ \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\def\ScaleHeightIfNeeded{%
+  \ifdim\Gin@nat@height>0.9\textheight
+    0.9\textheight
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\setkeys{Gin}{width=\ScaleWidthIfNeeded,height=\ScaleHeightIfNeeded,keepaspectratio}%
 
 % Colors ------------------
 \definecolor{darkred}{RGB}{136,0,0}
@@ -90,7 +108,9 @@
     $endif$
 
     % \includepdf[fitpaper=true]{cover.pdf}
+    $if(toc)$
     \tableofcontents
+    $endif$
 
     % Post-TOC Styling --------------
     \titleformat
@@ -106,6 +126,8 @@
 
     % Links (they're black in TOC, so styling has to come after)
     \hypersetup{colorlinks=true,linkcolor=darkred,urlcolor=darkred}
+    \renewcommand{\UrlFont}{\ttfamily\small}
+
 
     % Chapters -------------
     $body$
